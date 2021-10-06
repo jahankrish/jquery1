@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Rohini College Of Enginerring</h2>
+    <h3>User Registration Form</h3>
+
+    <div id="reg">
+        <form id="frm">
+
+            <label>NAME :</label>
+            <input type="text" name="name" id="name" placeholder="enter the name">
+
+            
+            <label>D.O.B :</label>
+            <input type="text" name="dob" id="dob" placeholder="YYYY-MM-DD">
+
+            <label>EMAIL :</label>
+            <input type="email" name="email" id="email" placeholder="enter the email">
+
+            <label>PASSWORD :</label>
+            <input type="password" name="password" id="password" placeholder="enter the password">
+
+           
+            <label>CONFIRM PASSWORD :</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="enter the confirmPassword">
+
+            
+            <label>PHONE NUMBER :</label>
+            <input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="enter the phoneNumber">
+
+            <button type="submit" id="submit" name="submit">registration</button>
+
+
+
+        </form>
+    </div>
+
+    <script src="js/jquery/jquery.js"></script>
+    <script src="js/jquery/jquery.validate.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+
+            $.validator.setDefaults({
+                submitHandler: function(e) {
+                    e.preventDefault();  
+                    alert("Submited");
+                }
+            });
+
+            $("#frm").validate({
+
+                rules:{
+                    name : "required",
+
+                     dob :{
+                        required:true,
+                        date :true
+                    },
+                    email:{
+                        required:true,
+                        email:true
+                    },
+                    password: {
+
+                        required:true,
+                        minlength:6
+
+                    },
+                    confirmPassword:{
+                        required:true,
+                        minlength:6,
+                        // equalTO:"#password"
+                    
+                       
+   
+                    },
+                    phoneNumber:{
+                     required:true,
+                     digits:true,
+                     maxlength:10,
+                     minlength:10
+                    }
+
+
+                },
+                messages:{
+                    name :"Please Enter Your Name",
+
+                    dob:{
+                        required:"Please Enter Your d.o.b",
+                        date:"Please Enter The Currect Date",
+                        
+                    },
+                    email:{
+                        required:"Please Enter Your email",
+                        email:"Please Enter Your valid Email"
+
+                    },
+                    password:{
+
+                        required:"Please Enter Your password",
+                        minlength:"Must be 6 charActor"
+                    },
+                    confirmPassword:{
+
+                        required:"Please Enter Your Confirm password",
+                        minlength:"Must be 6 charActor",
+                        // equalTO: "password not match"
+                      
+
+                    },
+                    phoneNumber:{
+
+                        required:"Please Enter Your Confirm PhoneNumber",
+                        digits:"CONTACT MUST BE NUMERIC",
+                        maxlength:"LENGTH MUST BE 10",
+                        minlength:"LENGTH MUST BE 10"
+                    }   
+
+                }
+            });
+ 
+        });
+    </script>
+    
+</body>
+</html>
